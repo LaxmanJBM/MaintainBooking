@@ -1,45 +1,40 @@
 package MaintainBooking;
-	import java.io.FileInputStream;
-	import java.util.Iterator;
-	import java.util.List;
-	import java.util.NoSuchElementException;
-	import java.util.Set;
+import java.io.FileInputStream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import javax.swing.JOptionPane;
-
 import org.apache.poi.ss.usermodel.Sheet;
-	import org.apache.poi.ss.usermodel.WorkbookFactory;
-	import org.apache.poi.xssf.usermodel.XSSFRow;
-	import org.apache.poi.xssf.usermodel.XSSFSheet;
-	import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-	import org.openqa.selenium.ElementClickInterceptedException;                //Notpad Copy
-	import org.openqa.selenium.ElementNotInteractableException;
-	import org.openqa.selenium.InvalidElementStateException;
-	import org.openqa.selenium.InvalidSelectorException;
-	import org.openqa.selenium.JavascriptExecutor;
-	import org.openqa.selenium.Keys;
-	import org.openqa.selenium.NoAlertPresentException;
-	import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.ElementClickInterceptedException;                //Notpad Copy
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.InvalidSelectorException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-	import org.openqa.selenium.interactions.Actions;
-	import org.openqa.selenium.support.FindBy;
-	import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.beust.jcommander.internal.Console;
-
 import Base.Browser;
 
+//This Script is perfect for Booking
 	public class MulMaintainBook extends Browser {                         //Notpad Copy
-		
-		
 		
 			
 			@FindBy(xpath = "//img[@id='ctl00_btnNew']")
