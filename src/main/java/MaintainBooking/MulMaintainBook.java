@@ -570,6 +570,7 @@ import Base.Browser;
 			@FindBy(xpath="//input[@id='amp_common_search_lookup_textbox_control__0']")private WebElement party1;
 			@FindBy(xpath="(//span[text()='Net FC Amount'])[2]")private WebElement netFcamtlabel;
 			@FindBy(xpath="//input[@name='ctl00$ContentPlaceHolder1$IFFBookBasic$imgRCclosediv']")private WebElement closeBtnRC;
+			@FindBy(xpath="//input[@name='ctl00$ContentPlaceHolder1$IFFBookBasic$btnCancel']")private WebElement cancelBtn2;
 			@FindBy(xpath="//input[@name='ctl00$ContentPlaceHolder1$IFFBookBasic$Img_nominagnt']")private WebElement nomPartyType;
 			@FindBy(xpath="//input[@id='amp_common_search_lookup_textbox_control__0']")private WebElement nomName;
 			
@@ -627,7 +628,7 @@ import Base.Browser;
 					{
 						XSSFRow celldata = sheet.getRow(i);	
 						try {
-						System.out.println("VALUE OF ID ="+ celldata.getCell(1).getNumericCellValue());
+				//		System.out.println("VALUE OF ID ="+ celldata.getCell(1).getNumericCellValue());
 						int idNo = (int) celldata.getCell(1).getNumericCellValue();
 						
 						if(idNo == excel) {
@@ -1669,7 +1670,10 @@ import Base.Browser;
 		//DOC CUT OFF DATE AND TIME
 					docCutOff.clear();
 					Thread.sleep(1000);
-					docCutOff.sendKeys(celldata.getCell(19).getStringCellValue());
+					String docdate = celldata.getCell(19).getStringCellValue();
+					JavascriptExecutor js3=(JavascriptExecutor)driver;
+					js3.executeScript("arguments[0].value='"+ docdate +"'" , docCutOff);
+				//	docCutOff.sendKeys(celldata.getCell(19).getStringCellValue());
 					time3.click();
 					try {
 					String hh3 =celldata.getCell(20).getStringCellValue();
@@ -2557,31 +2561,16 @@ import Base.Browser;
 					
 		public void saveBtn() throws Exception {
 				
-				 Thread.sleep(1500);
+				 Thread.sleep(1000);
 					closeBtnRC.click();
+				
 				try {
 						saveBtn.click();
 						Thread.sleep(2000);
 						driver.switchTo().alert().accept();
-						Thread.sleep(2000);
-						driver.switchTo().alert().accept();
-						Thread.sleep(2000);
-						try {
-							if(driver.switchTo().alert().getText().equalsIgnoreCase("Do you want to continue editing?Y/N")) {
-								driver.switchTo().alert().accept();
-							}}
-						catch(Exception e) {
-							System.out.println("Exception of 3rd popups alert= "+e);}
-					/*	try {
-							WebDriverWait wait=new WebDriverWait(driver, 5);
-							wait.until(ExpectedConditions.alertIsPresent());
-							Alert a=driver.switchTo().alert();
-							if(a.getText().contains("Do you want to continue editing?Y/N")) {           //Do you want to continue editing?Y/N
-								a.accept();}}
-						catch(Exception e) {Thread.sleep(1500);}*/
-						
+						Thread.sleep(3000);
+					    driver.switchTo().alert().accept();   //("Do you want to continue editing?Y/N")) 
 //This is for Successful Booking Code...
-			
 						 if(text2.getText().contains("* Booking Saved Successfully")) {        //* Booking Saved Successfully CHN/BKG/AFE/00025/23-24
 									//	JOptionPane.showMessageDialog(null, "Booking Saved Successfully"+ exec);
 							
@@ -2589,8 +2578,7 @@ import Base.Browser;
 							   close1.click();
 							 
 							   Thread.sleep(2000);	
-						       ppClose.click();
-						      	
+						       ppClose.click();	
 						      	
 						       Thread.sleep(2000);
 							   undo.click();
@@ -2619,7 +2607,21 @@ import Base.Browser;
 						 
 					   Thread.sleep(2000);
 					   newBt.click();
-					}}
+					}
+					else{
+						driver.switchTo().alert().accept();
+						Thread.sleep(1500);                 
+						   close1.click();
+						 
+						   Thread.sleep(2000);	
+					       ppClose.click();	
+					      	
+					       Thread.sleep(2000);
+						   undo.click();
+							 
+						   Thread.sleep(2000);
+						   newBt.click();	}
+					}
 		}		
 	}
 
